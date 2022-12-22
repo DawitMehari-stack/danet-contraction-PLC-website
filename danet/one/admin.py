@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Content, Client, Owner, ContentType, Project, ProjectImage
+from .models import Content, Client, Owner, ContentType, Project, ProjectImage, ContentImage
 
 # Register your models here.
 """class ContentAdmin(admin.ModelAdmin):
@@ -14,7 +14,7 @@ from .models import Content, Client, Owner, ContentType, Project, ProjectImage
 """class ProjectAdmin(admin.ModelAdmin):
     list_display = ("project","description", "client")   """  
 
-#admin.site.register(ProjectImage)
+admin.site.register(ContentImage)
 admin.site.register(Project)
 admin.site.register(Content)
 admin.site.register(ContentType)

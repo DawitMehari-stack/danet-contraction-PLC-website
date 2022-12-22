@@ -4,12 +4,6 @@ from datetime import datetime
 
 # Create your models here.
 
-
-# Create your models here.
-
-
-
-
 class Owner(models.Model):
     first = models.CharField(max_length=64, default="Null")
     middle = models.CharField(max_length=64, default="Null")
@@ -40,7 +34,7 @@ class Client(models.Model):
         return f"{self.first}{self.middle}{self.last}"
 
     
-#Content type could be project, about us, vision, ...
+#Content type could be about us, vision, ...
 class ContentType(models.Model):
     content_type = models.CharField(max_length=100)
     #log = models.ManyToManyField(Log, blank=True, related_name="log")
@@ -61,12 +55,13 @@ class Content(models.Model):
 class ContentImage(models.Model):
     imageTitle = models.CharField(max_length=64)
     imageDescription = models.CharField(max_length=64)
+    image = models.ImageField(upload_to='images/', default='Null')
     #videofile= models.FileField(upload_to='images/', null=True, verbose_name="")
     #image_url = models.CharField(max_length=100)
-    img_owner = models.ForeignKey(Content, on_delete=models.CASCADE, related_name="content_image")
+    content = models.ForeignKey(Content, on_delete=models.CASCADE, related_name="content_image")
 
     def __str__(self):
-        return f"{self.imageTitle}  {self.img_owner})"
+        return f"{self.imageTitle}  {self.content}"
 
 class Project(models.Model):
     title = models.CharField(max_length=100, default="Null")
